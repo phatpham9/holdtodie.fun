@@ -1,2 +1,2 @@
 # scraper.fun
-Easiest create, scrape &amp; share html scraping tool ever
+The easiest create, scrape &amp; share html scraping tool ever
