@@ -5,8 +5,8 @@ import qs from 'qs';
 import './ScraperBuilder.css';
 
 const METHOD = 'GET';
-const SCHEME = 'https';
-const API_HOST = 'scraper.onroads.xyz';
+const SCHEME = window.location.protocol;
+const API_HOST = window.location.host;
 const BASE_PATH = '/scrape';
 
 const map = ({ url, selector }) => ({
@@ -15,7 +15,7 @@ const map = ({ url, selector }) => ({
 });
 
 const generate = params => {
-  return `${SCHEME}://${API_HOST}${BASE_PATH}${qs.stringify(map(params), {
+  return `${SCHEME}//${API_HOST}${BASE_PATH}${qs.stringify(map(params), {
     addQueryPrefix: true,
   })}`
 };
