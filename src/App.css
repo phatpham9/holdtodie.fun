@@ -1,0 +1,11 @@
+.app .app-header {
+  text-align: center;
+}
+
+.app .app-header .app-logo {
+  width: 150px;
+}
+
+.app .app-header .app-description {
+  margin-top: 15px;
+}

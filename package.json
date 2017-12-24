@@ -1,0 +1,31 @@
+{
+  "name": "scraper.fun",
+  "description": "Creating, scraping & sharing HTML scraper are way funnier!",
+  "version": "0.1.0",
+  "homepage": "https://scraper.fun",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phatpham9/scraper.fun.git"
+  },
+  "author": {
+    "name": "Phat Pham",
+    "email": "phatpham9@gmail.com",
+    "url": "https://onroads.xyz"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": ">=9"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-beta.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
+    "reactstrap": "next"
+  }
+}
