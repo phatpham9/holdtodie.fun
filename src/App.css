@@ -1,9 +1,14 @@
+.btn-outline-secondary:not([disabled]):not(.disabled):active, .btn-outline-secondary:not([disabled]):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle,
+.form-control:focus {
+  box-shadow: none !important;
+}
+
 .app .app-header {
+  margin-top: 30px;
   text-align: center;
 }
 
 .app .app-header .app-logo {
-  margin-top: 15px;
   width: 150px;
 }
 
@@ -13,4 +18,5 @@
 
 .app .scraper-builder-wrapper {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
