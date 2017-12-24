@@ -16,7 +16,7 @@ const App = props => (
             <h2 className="app-description">Scraper Builder</h2>
           </header>
 
-          <div class="scraper-build-wrapper">
+          <div className="scraper-build-wrapper">
             <ScraperBuilder />
           </div>
         </div>
