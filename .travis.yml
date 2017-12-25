@@ -1,27 +1,40 @@
+sudo: required
+
 language: node_js
 
 node_js:
 - 9
 
-install:
-- yarn
+jobs:
+  include:
+    - stage: build
+      install:
+        - yarn
+      script:
+        - yarn build
+    - stage: deploy
+      install:
+        - yarn
+      script:
+        - yarn build
+      deploy:
+        - provider: surge
+          project: ./build
+          domain: pp9-staging-scraper-fun.surge.sh
+          skip_cleanup: true
+          on:
+            branch: master
+        - provider: surge
+          project: "./build"
+          domain: pp9-scraper-fun.surge.sh
+          on:
+            branch: master
+            tags: true
 
 cache:
   yarn: true
   directories:
   - node_modules
-
-script:
-- yarn build
-
-deploy:
-- provider: surge
-  project: "./build"
-  domain: pp9-scraper-fun.surge.sh
-  skip_cleanup: true
-  on:
-    branch: master
-    tags: true
 
 notifications:
   email: false
