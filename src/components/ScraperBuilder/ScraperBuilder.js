@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Label, Input, ButtonGroup, Button, Table } from 'reactstrap';
+import { Form, FormGroup, Label, Input, ButtonGroup, Table } from 'reactstrap';
 import qs from 'qs';
+
+import Button from '../Common/Button';
+import CopyToClipboardButton from '../Common/CopyToClipboardButton';
 
 import './ScraperBuilder.css';
 
@@ -28,7 +31,7 @@ const map = params => Object.keys(params).reduce((result, paramKey) => {
 
   return {
     ...result,
-    [PARAMS_MAP[paramKey]]: (params[paramKey] && params[paramKey].trim()) || undefined,
+    [PARAMS_MAP[paramKey]]: (params[paramKey] && (typeof params[paramKey] === 'string' ? params[paramKey].trim() : params[paramKey])) || undefined,
   }
 }, {});
 
@@ -86,6 +89,7 @@ class ScraperBuilder extends Component {
       params,
       request: generate(type, params),
       response: '',
+      inProgress: false,
     };
 
     this.changeType = this.changeType.bind(this);
@@ -161,10 +165,15 @@ class ScraperBuilder extends Component {
   async submit(e) {
     e.preventDefault();
 
-    const response = await request(this.state.request);
-
     this.setState({
-      response,
+      inProgress: true,
+    }, async () => {
+      const response = await request(this.state.request);
+
+      this.setState({
+        response,
+        inProgress: false,
+      });
     });
   }
 
@@ -278,13 +287,14 @@ class ScraperBuilder extends Component {
               </FormGroup>
             </div>
           )}
-    
-          <FormGroup className="request">
+
+          <FormGroup className="request clearfix">
             <Label>Request</Label>
+            <CopyToClipboardButton className="btn-copy-to-cb float-right" value={this.state.request} />
             <code className="d-block">{this.state.request}</code>
           </FormGroup>
     
-          <Button color="primary" type="submit" block>Test</Button>
+          <Button color="primary" type="submit" block busy={this.state.inProgress} busyText="Requesting...">Test</Button>
         </Form>
 
         {!!this.state.response && (
