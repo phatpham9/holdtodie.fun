@@ -78,7 +78,7 @@ class ScraperBuilder extends Component {
         key: '',
         value: '',
       }],
-      limit: '',
+      limit: 10,
     };
 
     this.state = {
