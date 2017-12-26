@@ -281,7 +281,7 @@ class ScraperBuilder extends Component {
     
           <FormGroup className="request">
             <Label>Request</Label>
-            <code className="d-block">curl {this.state.request}</code>
+            <code className="d-block">{this.state.request}</code>
           </FormGroup>
     
           <Button color="primary" type="submit" block>Test</Button>
