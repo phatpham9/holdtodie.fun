@@ -105,6 +105,7 @@ class ScraperBuilder extends Component {
     this.setState({
       type,
       request: generate(type, params),
+      response: '',
     });
   }
 
@@ -228,7 +229,7 @@ class ScraperBuilder extends Component {
           ) : (
             <div className="multiple-selectors">
               <FormGroup>
-                <Label for="scope">Scope selector</Label>
+                <Label for="scope">Scope</Label>
                 <Table size="sm">
                   <tbody>
                     <tr>
