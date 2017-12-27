@@ -28,21 +28,23 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Navbar color="primary" dark expand="md">
-        <Container>
-          <NavbarBrand href="/">Scraper.Fun</NavbarBrand>
+      <header className="header">
+        <Navbar color="primary" dark expand="md">
+          <Container>
+            <NavbarBrand href="/">Scraper.Fun</NavbarBrand>
 
-          <NavbarToggler onClick={this.toggle} />
+            <NavbarToggler onClick={this.toggle} />
 
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="https://github.com/phatpham9/scraper.fun">Github</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Container>
-      </Navbar>
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="https://github.com/phatpham9/scraper.fun">Github</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>
+      </header>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 import Header from './components/Common/Header';
+import Footer from './components/Common/Footer';
 import logo from './logo.svg';
 import ScraperBuilder from './components/ScraperBuilder';
 
@@ -25,6 +26,8 @@ const App = props => (
         </Col>
       </Row>
     </Container>
+
+    <Footer />
   </div>
 );
 
