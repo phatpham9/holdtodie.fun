@@ -1,18 +1,13 @@
-.btn-outline-secondary:not([disabled]):not(.disabled):active, .btn-outline-secondary:not([disabled]):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle,
-.form-control:focus {
-  box-shadow: none !important;
-}
-
-.app .app-header {
+.app .page-header {
   margin-top: 30px;
   text-align: center;
 }
 
-.app .app-header .app-logo {
+.app .page-header .page-logo {
   width: 150px;
 }
 
-.app .app-header .app-description {
+.app .page-header .page-description {
   margin-top: 15px;
 }
 
