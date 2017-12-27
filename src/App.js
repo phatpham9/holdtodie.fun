@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faCode from '@fortawesome/fontawesome-free-solid/faCode';
 
 import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
-import logo from './logo.svg';
 import ScraperBuilder from './components/ScraperBuilder';
 
 import './App.css';
@@ -16,7 +17,7 @@ const App = props => (
       <Row className="justify-content-md-center">
         <Col md="6">
           <div className="page-header">
-            <img className="page-logo" src={logo} alt="Scraper.Fun" />
+            <FontAwesomeIcon icon={faCode} size="10x" />
             <h2 className="page-description">Scraper Builder</h2>
           </div>
 
