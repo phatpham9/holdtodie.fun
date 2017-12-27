@@ -1,2 +1,2 @@
 # scraper.fun
-Building, scraping & sharing HTML scraper are way funnier!
+Building, using & sharing HTML scraper are way funnier!
