@@ -200,7 +200,7 @@ class ScraperBuilder extends Component {
                   </td>
 
                   <td>
-                    <Input type="url" id="url" placeholder="Website URL" value={this.state.params.url} onChange={e => this.change('url', e.target.value)} required />
+                    <Input type="url" id="url" placeholder="Website URL" value={this.state.params.url} onChange={e => this.changeParam('url', e.target.value)} required />
                   </td>
                 </tr>
               </tbody>
