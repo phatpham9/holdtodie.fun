@@ -1,7 +1,7 @@
 {
   "name": "scraper.fun",
   "description": "Creating, using & sharing HTML scraper are way funnier!",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://scraper.fun",
   "repository": {
     "type": "git",
