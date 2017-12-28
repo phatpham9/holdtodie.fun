@@ -17,7 +17,7 @@ const App = props => (
       <Row className="justify-content-md-center">
         <Col md="6">
           <div className="page-header">
-            <FontAwesomeIcon icon={faCode} size="10x" />
+            <FontAwesomeIcon icon={faCode} size="6x" />
             <h2 className="page-description">Scraper Builder</h2>
           </div>
 
