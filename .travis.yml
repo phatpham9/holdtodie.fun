@@ -25,8 +25,9 @@ jobs:
           on:
             branch: master
         - provider: surge
-          project: "./build"
+          project: ./build
           domain: pp9-scraper-fun.surge.sh
+          skip_cleanup: true
           on:
             branch: master
             tags: true
