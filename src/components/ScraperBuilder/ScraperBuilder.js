@@ -301,7 +301,7 @@ class ScraperBuilder extends Component {
         {!!this.state.response && (
           <FormGroup className="response">
             <Label>Response</Label>
-            <code className="d-block">{this.state.response}</code>
+            <code className="d-block">{this.state.type === 'single' ? this.state.response : JSON.stringify(JSON.parse(this.state.response), null, 2)}</code>
           </FormGroup>
         )}
       </div>

@@ -30,4 +30,9 @@
 
 .scraper-builder code {
   overflow: scroll;
+  max-height: 500px;
+}
+
+.scraper-builder .response code {
+  white-space: pre;
 }
