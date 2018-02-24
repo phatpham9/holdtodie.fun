@@ -38,7 +38,7 @@ class Header extends React.Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="https://github.com/phatpham9/scraper.fun">Github</NavLink>
+                  <NavLink href="https://github.com/chauduong1192/cryptocurrency-web.git">Github</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>

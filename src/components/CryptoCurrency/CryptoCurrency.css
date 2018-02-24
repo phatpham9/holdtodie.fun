@@ -1,0 +1,26 @@
+
+.crypto-currency-wrapper .response-table {
+    margin: 1.5rem 0 0;
+}
+.crypto-currency-wrapper .response-table span {
+  text-transform: uppercase;
+  color: #aaa;
+  font-size: smaller;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.crypto-currency-wrapper .response-table img {
+  width: 20px;
+  display: inline-block;
+  margin-top: -4px;
+  margin-right: 5px;
+}
+.crypto-currency-wrapper .response-table table{
+  margin-top: 5px;
+}
+.form-group:last-child{
+  margin-bottom: 0;
+}
+button {
+    cursor: pointer;
+}

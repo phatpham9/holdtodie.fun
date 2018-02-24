@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faCode from '@fortawesome/fontawesome-free-solid/faCode';
+import faBtc from '@fortawesome/fontawesome-free-brands/faBtc';
 
 import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
@@ -15,15 +15,12 @@ const App = props => (
 
     <Container>
       <Row className="justify-content-md-center">
-        <Col md="6">
+        <Col md="8">
           <div className="page-header">
-            <FontAwesomeIcon icon={faCode} size="6x" />
-            <h2 className="page-description">Cryptocurrency Cacular</h2>
+            <FontAwesomeIcon icon={faBtc} size="6x" />
+            <h2 className="page-description">Cryptocurrency Roi</h2>
           </div>
-
-          <div className="crypto-currency-wrapper">
-            <CryptoCurrency />
-          </div>
+          <CryptoCurrency />
         </Col>
       </Row>
     </Container>
