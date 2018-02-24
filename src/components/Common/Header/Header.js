@@ -31,7 +31,7 @@ class Header extends React.Component {
       <header className="header">
         <Navbar color="primary" dark expand="md">
           <Container>
-            <NavbarBrand href="/">Scraper.Fun</NavbarBrand>
+            <NavbarBrand href="/">Cryptocurrency.roi</NavbarBrand>
 
             <NavbarToggler onClick={this.toggle} />
 

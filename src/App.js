@@ -5,7 +5,7 @@ import faCode from '@fortawesome/fontawesome-free-solid/faCode';
 
 import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
-import ScraperBuilder from './components/ScraperBuilder';
+import CryptoCurrency from './components/CryptoCurrency';
 
 import './App.css';
 
@@ -18,11 +18,11 @@ const App = props => (
         <Col md="6">
           <div className="page-header">
             <FontAwesomeIcon icon={faCode} size="6x" />
-            <h2 className="page-description">Scraper Builder</h2>
+            <h2 className="page-description">Cryptocurrency Cacular</h2>
           </div>
 
-          <div className="scraper-builder-wrapper">
-            <ScraperBuilder />
+          <div className="crypto-currency-wrapper">
+            <CryptoCurrency />
           </div>
         </Col>
       </Row>
