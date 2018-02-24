@@ -7,4 +7,4 @@ A ROI calculator of top cryptocurrencies on coinmarketcap.com with web version.
 
 - Phat Pham | Author | [Website](https://onroads.xyz) | [GitHub](https://github.com/phatpham9)
 - Khang Huynh | [GitHub](https://github.com/khanghuynh92)
-- Chau Duong | [Website](https://chauduongfood.com) | [GitHub](https://github.com/chauduong1192)
+- Chau Duong | [Website](http://chauduongfood.com) | [GitHub](https://github.com/chauduong1192)
