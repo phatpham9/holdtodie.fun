@@ -18,7 +18,7 @@ const App = props => (
         <Col md="8">
           <div className="page-header">
             <FontAwesomeIcon icon={faBtc} size="6x" />
-            <h2 className="page-description">Cryptocurrency Roi</h2>
+            <h2 className="page-description">ROI Calculator</h2>
           </div>
           <CryptoCurrency />
         </Col>

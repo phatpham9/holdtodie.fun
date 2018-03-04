@@ -9,7 +9,7 @@ const Footer = props => (
   <footer className="footer">
     <Container>
       <div className="text-center text-muted">
-        Built with <FontAwesomeIcon className="text-danger" icon={faHeart} /> by <a href="https://chauduongfood.com" target="_blank" rel="noopener noreferrer">Chau Duong</a>
+        Built with <FontAwesomeIcon className="text-danger" icon={faHeart} /> by <a href="https://onroads.xyz" target="_blank" rel="noopener noreferrer">Phat Pham</a> & <a href="https://github.com/phatpham9/holdtodie.fun#author--contributors" target="_blank" rel="noopener noreferrer">friends</a>
       </div>
     </Container>
   </footer>

@@ -31,14 +31,14 @@ class Header extends React.Component {
       <header className="header">
         <Navbar color="primary" dark expand="md">
           <Container>
-            <NavbarBrand href="/">Cryptocurrency.roi</NavbarBrand>
+            <NavbarBrand href="/">HoldToDie.Fun</NavbarBrand>
 
             <NavbarToggler onClick={this.toggle} />
 
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="https://github.com/chauduong1192/cryptocurrency-web.git">Github</NavLink>
+                  <NavLink href="https://github.com/phatpham9/holdtodie.fun">Github</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>

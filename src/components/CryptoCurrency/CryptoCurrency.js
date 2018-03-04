@@ -50,7 +50,6 @@ class CryptoCurrency extends Component {
     });
   }
   render() {
-    console.log(this.state.response);
     return (
       <div className="crypto-currency-wrapper">
         <Form onSubmit={this.submit}>
@@ -86,7 +85,7 @@ class CryptoCurrency extends Component {
               </FormText>
             </FormGroup>
           <FormGroup>
-            <Button color="primary" type="submit" block busy={this.state.inProgress} busyText="Requesting...">Calculator</Button>
+            <Button color="primary" type="submit" block busy={this.state.inProgress} busyText="Requesting...">Calculate</Button>
           </FormGroup>
         </Form>
         { this.state.response &&

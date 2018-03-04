@@ -1,16 +1,16 @@
 {
-  "name": "crypto-roi-calculator-web",
-  "description": "A ROI calculator of top cryptocurrencies on coinmarketcap.com with web version",
+  "name": "holdtodie.fun",
+  "description": "Find the best coins to hold based on historical data",
   "version": "0.1.0",
-  "homepage": "https://5mins.fun",
+  "homepage": "https://holdtodie.fun",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chauduong1192/cryptocurrency-web.git"
+    "url": "https://github.com/phatpham9/holdtodie.fun.git"
   },
   "author": {
-    "name": "Chau Duong",
-    "email": "chau.duong1192@gmail.com",
-    "url": "https://chauduongfood.com"
+    "name": "Phat Pham",
+    "email": "phatpham9@gmail.com",
+    "url": "https://onroads.xyz"
   },
   "scripts": {
     "start": "react-scripts start",
