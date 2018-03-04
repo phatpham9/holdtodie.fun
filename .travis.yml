@@ -7,37 +7,35 @@ node_js:
 
 jobs:
   include:
-    - stage: build
-      install:
-        - yarn
-      script:
-        - yarn build
-    - stage: deploy
-      install:
-        - yarn
-      script:
-        - yarn build
-      deploy:
-        - provider: surge
-          project: ./build
-          domain: pp9-staging-scraper-fun.surge.sh
-          skip_cleanup: true
-          on:
-            branch: master
-        - provider: surge
-          project: ./build
-          domain: pp9-scraper-fun.surge.sh
-          skip_cleanup: true
-          on:
-            branch: master
-            tags: true
-
+  - stage: build
+    install:
+    - yarn
+    script:
+    - yarn build
+  - stage: deploy
+    install:
+    - yarn
+    script:
+    - yarn build
+    deploy:
+    - provider: surge
+      project: ./build
+      domain: pp9-staging-holdtodie-fun.surge.sh
+      skip_cleanup: true
+      on:
+        branch: master
+    - provider: surge
+      project: ./build
+      domain: pp9-holdtodie-fun.surge.sh
+      skip_cleanup: true
+      on:
+        branch: master
+        tags: true
 cache:
   yarn: true
   directories:
   - node_modules
-
 notifications:
   email: false
   slack:
-    secure: cEBdbS8nVFdSvZssNEy0LTtyKs3E2aRM7lC9JjtEu029AM7WV+FVMMOGDz1fXuQIy3/X35rd0U8K2KHbDXxVOoT4TcMgDTDwRhc/kHsRFAHEG1MK6l+XvBYX/ta3bCg+w6q9a5z/eppLxWJH1D9vIn0eSGO+9rlTh+X3FeANjOCI/5huS6Ssf31GeVaHi6ZrUT0ZtIaP7DV21YPDb5r9hkyEpJpIucPPU3GToqc/MzEWryrWQtWmsqxvFa6L1/2n9Yv4ZsUI0G8v9icqvHFP4D76GqzyO3tGP1fJKGdv29mrAoI52A2pl2KkgURO/3PxktvOaeQ8Ir3YFEsJfg/MtaSyEU1UtKYKTKR1g0b4FfE5CvQ13RMRQ5Owg5S92nVN7jdVsIKNTlQMOAoz4LP1qLkqbXj0TSlOVcL5vXFQydmxhr0C4PPHVe4u9m8qRNKLtmjD1O3YN5WDaWxTFkTnXgdXld0Xtp9RZR3keaKyBPGtRuQTg3Bwn9Vfhwst+35XXeUfGcLrEiRuiFsU27ItNDy/NbyYvYSHieLwXSYGV2YBSe8xpYZ85RGsC+dTrS0lxz27MqJEVy7l2WgOGb3Aa86eALuEWPzcC3i5g0rIBNIG4pL1A7AI3BeFPxVBeHlE7VtI+JJb3ahQ/VvTF/XC0O1kuvItxiLv3MIcpI924m4=
+    secure: Sg650/e4saTU+je1IdZKjQeeZdruN/qFmEoN06tmq2DonAOMTbm+9crtb9YHRkTpSHclppdzj0YkmAJzlMLpz7L1+Z0iJglMh42mOSVuWZAbWwRvOyGHEIFXhjvY33kZVBJsZh/U/KesuIqtvlR6/jja6DjXHqzYRnDseG1WeQbxMPo9z04Evji1j4mXaDtJqMEdEIYF2NEezGKMluVRdiwMu1BQUlSNLi4C2GpoPmw/PCydH484ePPhuFOSDySzKNHK/7kZhAtujY1I7ITE2CtM15qbjzmt5DUcHRNfnAJJrS5Ura+ZmtG18JZmPjszic0PyhXNbvcJMGnsmreHFt1yviAG1SHmsrIVLzy5cXD2BIE+96BWT545bwFtAG7Ix9RPsuQy6oieypT4RPuyzKzC5j/rFjL5PGfkFjG8xFYFuOyGNAIJQFAoHY12VAZJxh/jGTwctmlpMK9avaM4Gb7Dv0+mgO6UPmey/K/s3PLocMJtFA3t6ICbdHTJlca6iU3lA6TuomHt6aVhf449XZWhEGsujbZUI6+2J8pkWC0VpqaZ8Mt/EB9DcAdOPF8nO68sUFihP/AvGBv/CwfF2/pTGtkqb5Q/U70R7l3vvBaqut29bzMkzaivedoLDnb/mQvb9dxx+iC9YDYmbiHCtvu6Y2UxLAam3tQ/3ZhdEQU=
