@@ -5,7 +5,7 @@ import faBtc from '@fortawesome/fontawesome-free-brands/faBtc';
 
 import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
-import CryptoCurrency from './components/CryptoCurrency';
+import Calculator from './components/Calculator';
 
 import './App.css';
 
@@ -20,7 +20,7 @@ const App = props => (
             <FontAwesomeIcon icon={faBtc} size="6x" />
             <h2 className="page-description">ROI Calculator</h2>
           </div>
-          <CryptoCurrency />
+          <Calculator />
         </Col>
       </Row>
     </Container>

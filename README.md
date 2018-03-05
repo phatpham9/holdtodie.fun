@@ -1,5 +1,5 @@
 # holdtodie.fun
-Find the best coins to hold based on historical data
+Find the best coins to hold based on historical data. Why not!?
 
 [![Build Status](https://travis-ci.org/gorillab/reader-web.svg?branch=master)](https://travis-ci.org/phatpham9/holdtodie.fun)
 [![Dependencies Status](https://david-dm.org/phatpham9/holdtodie.fun.svg)](https://github.com/phatpham9/holdtodie.fun)

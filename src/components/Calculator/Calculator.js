@@ -3,10 +3,10 @@ import { Form, FormGroup, Label, Input, Table, Row, Col, FormText } from 'reacts
 
 import Button from '../Common/Button';
 
-import Calculator from 'cryptocurrency-roi';
-import './CryptoCurrency.css';
+import CryptoROI from 'crypto-roi';
+import './Calculator.css';
 
-class CryptoCurrency extends Component {
+class Calculator extends Component {
   constructor(props) {
     super(props);
 
@@ -42,16 +42,16 @@ class CryptoCurrency extends Component {
       response: undefined,
     }, async () => {
 
-      const response = await Calculator.init({top, from, to, max, min, ignores: ignores ? ignores.split(',') : [],});
+      const response = await CryptoROI.calculate({top, from, to, max, min, ignores: ignores ? ignores.split(',') : [],});
       this.setState({
-        response: response.print(),
+        response,
         inProgress: false,
       });
     });
   }
   render() {
     return (
-      <div className="crypto-currency-wrapper">
+      <div className="calculator-wrapper">
         <Form onSubmit={this.submit}>
           <FormGroup>
             <Label for="top">Top</Label>
@@ -105,7 +105,7 @@ class CryptoCurrency extends Component {
                     this.state.response.coins.map((coin, index) => 
                       <tr key={index}>
                         <td>
-                          <img src={`https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/32/color/${coin.symbol.toLowerCase()}.png`} /> 
+                          <img src={`https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/32/color/${coin.symbol.toLowerCase()}.png`} alt="" /> 
                           {coin.name || 'N/A'}
                         </td>
                         <td>{`#${coin.lastIndex}`}</td>
@@ -131,4 +131,4 @@ class CryptoCurrency extends Component {
   }
 }
 
-export default CryptoCurrency;
+export default Calculator;
