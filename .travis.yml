@@ -1,43 +1,24 @@
 sudo: required
-
 language: node_js
-
 node_js:
-- 9
-
+    - 9
 jobs:
-  include:
-  - stage: build
-    install:
-    - yarn
-    script:
-    - yarn build
-  - stage: deploy
-    install:
-    - yarn
-    script:
-    - yarn build
-    deploy:
-    - provider: surge
-      project: ./build
-      domain: pp9-staging-holdtodie-fun.surge.sh
-      skip_cleanup: true
-      on:
-        branch: master
-    - provider: surge
-      project: ./build
-      domain: pp9-holdtodie-fun.surge.sh
-      skip_cleanup: true
-      on:
-        branch: master
-        tags: true
-
+    include:
+        -
+            stage: build
+            install: [yarn]
+            script: ['yarn build']
+        -
+            stage: deploy
+            install: [yarn]
+            script: ['yarn build']
+            deploy: [{provider: surge, project: ./build, domain: pp9-staging-holdtodie-fun.surge.sh, skip_cleanup: true, on: {branch: master}}, {provider: surge, project: ./build, domain: pp9-holdtodie-fun.surge.sh, skip_cleanup: true, on: {branch: master, tags: true}}]
 cache:
-  yarn: true
-  directories:
-  - node_modules
-
+    yarn: true
+    directories:
+        - node_modules
 notifications:
-  email: false
-  slack:
-    secure: Sg650/e4saTU+je1IdZKjQeeZdruN/qFmEoN06tmq2DonAOMTbm+9crtb9YHRkTpSHclppdzj0YkmAJzlMLpz7L1+Z0iJglMh42mOSVuWZAbWwRvOyGHEIFXhjvY33kZVBJsZh/U/KesuIqtvlR6/jja6DjXHqzYRnDseG1WeQbxMPo9z04Evji1j4mXaDtJqMEdEIYF2NEezGKMluVRdiwMu1BQUlSNLi4C2GpoPmw/PCydH484ePPhuFOSDySzKNHK/7kZhAtujY1I7ITE2CtM15qbjzmt5DUcHRNfnAJJrS5Ura+ZmtG18JZmPjszic0PyhXNbvcJMGnsmreHFt1yviAG1SHmsrIVLzy5cXD2BIE+96BWT545bwFtAG7Ix9RPsuQy6oieypT4RPuyzKzC5j/rFjL5PGfkFjG8xFYFuOyGNAIJQFAoHY12VAZJxh/jGTwctmlpMK9avaM4Gb7Dv0+mgO6UPmey/K/s3PLocMJtFA3t6ICbdHTJlca6iU3lA6TuomHt6aVhf449XZWhEGsujbZUI6+2J8pkWC0VpqaZ8Mt/EB9DcAdOPF8nO68sUFihP/AvGBv/CwfF2/pTGtkqb5Q/U70R7l3vvBaqut29bzMkzaivedoLDnb/mQvb9dxx+iC9YDYmbiHCtvu6Y2UxLAam3tQ/3ZhdEQU=
+    email: false
+    slack:
+        secure: Sg650/e4saTU+je1IdZKjQeeZdruN/qFmEoN06tmq2DonAOMTbm+9crtb9YHRkTpSHclppdzj0YkmAJzlMLpz7L1+Z0iJglMh42mOSVuWZAbWwRvOyGHEIFXhjvY33kZVBJsZh/U/KesuIqtvlR6/jja6DjXHqzYRnDseG1WeQbxMPo9z04Evji1j4mXaDtJqMEdEIYF2NEezGKMluVRdiwMu1BQUlSNLi4C2GpoPmw/PCydH484ePPhuFOSDySzKNHK/7kZhAtujY1I7ITE2CtM15qbjzmt5DUcHRNfnAJJrS5Ura+ZmtG18JZmPjszic0PyhXNbvcJMGnsmreHFt1yviAG1SHmsrIVLzy5cXD2BIE+96BWT545bwFtAG7Ix9RPsuQy6oieypT4RPuyzKzC5j/rFjL5PGfkFjG8xFYFuOyGNAIJQFAoHY12VAZJxh/jGTwctmlpMK9avaM4Gb7Dv0+mgO6UPmey/K/s3PLocMJtFA3t6ICbdHTJlca6iU3lA6TuomHt6aVhf449XZWhEGsujbZUI6+2J8pkWC0VpqaZ8Mt/EB9DcAdOPF8nO68sUFihP/AvGBv/CwfF2/pTGtkqb5Q/U70R7l3vvBaqut29bzMkzaivedoLDnb/mQvb9dxx+iC9YDYmbiHCtvu6Y2UxLAam3tQ/3ZhdEQU=
+        on_pull_requests: false
