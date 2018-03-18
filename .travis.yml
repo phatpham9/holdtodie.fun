@@ -1,22 +1,33 @@
 sudo: required
 language: node_js
 node_js:
-    - 9
+  - 9
 jobs:
     include:
-        -
-            stage: build
-            install: [yarn]
-            script: ['yarn build']
-        -
-            stage: deploy
-            install: [yarn]
-            script: ['yarn build']
-            deploy: [{provider: surge, project: ./build, domain: pp9-staging-holdtodie-fun.surge.sh, skip_cleanup: true, on: {branch: master}}, {provider: surge, project: ./build, domain: pp9-holdtodie-fun.surge.sh, skip_cleanup: true, on: {branch: master, tags: true}}]
+      - stage: build
+        install: yarn
+        script: yarn build
+      - stage: deploy
+        install: yarn
+        script: yarn build
+        deploy:
+          - provider: surge
+            project: ./build
+            domain: pp9-staging-holdtodie-fun.surge.sh
+            skip_cleanup: true
+            on:
+                branch: master
+          - provider: surge
+            project: ./build
+            domain: pp9-holdtodie-fun.surge.sh
+            skip_cleanup: true
+            on:
+                branch: master
+                tags: true
 cache:
     yarn: true
     directories:
-        - node_modules
+      - node_modules
 notifications:
     email: false
     slack:
