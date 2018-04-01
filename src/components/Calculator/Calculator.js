@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Table, Row, Col, FormText } from 'reactstrap';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faAngleUp from '@fortawesome/fontawesome-free-solid/faAngleUp';
+import faAngleDown from '@fortawesome/fontawesome-free-solid/faAngleDown';
 
 import Button from '../Common/Button';
 
 import CryptoROI from 'crypto-roi';
 import './Calculator.css';
+
+const getDateString = (date) => {
+  const [dateString] = new Date(date).toISOString().match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/);
+
+  return dateString;
+};
+
+/**
+ * formatNumber(number, n, x)
+ *
+ * @param integer n: length of decimal
+ * @param integer x: length of sections
+ */
+const formatNumber = (number, n = 2, x = 3) => {
+  const re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+
+  return number.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+};
 
 class Calculator extends Component {
   constructor(props) {
@@ -111,33 +132,59 @@ class Calculator extends Component {
               <thead>
                 <tr>
                   <th>Coin</th>
-                  <th colSpan="2">{`From ${this.state.from}`}</th>
-                  <th>Multiplier</th>
-                  <th colSpan="2">{`To ${this.state.to}`}</th>
+                  <th className="text-right">{`From ${getDateString(this.state.from)}`}</th>
+                  <th className="text-right">ROI</th>
+                  <th className="text-right">{`To ${getDateString(this.state.to)}`}</th>
                 </tr>
               </thead>
 
               <tbody>
-                { this.state.response.coins &&
-                    this.state.response.coins.map((coin, index) =>
-                      <tr key={index}>
-                        <td>
-                          <img src={`https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/32/color/${coin.symbol.toLowerCase()}.png`} alt="" />
-                          {coin.name || 'N/A'}
-                        </td>
-                        <td>{`#${coin.lastIndex}`}</td>
-                        <td>{`$${coin.lastPrice}`}</td>
-                        <td>{coin.price ? Math.round(coin.price/coin.lastPrice, 2) : 'N/A'}</td>
-                        <td>{coin.price ? `$${coin.price}` : 'N/A'}</td>
-                        <td>{coin.index ? `#${coin.index}` : 'N/A'}</td>
-                      </tr>
-                    )
-                }
+                {this.state.response.coins && (
+                  this.state.response.coins.map((coin, index) =>
+                    <tr key={index}>
+                      <td>
+                        <img src={`https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/32/color/${coin.symbol.toLowerCase()}.png`} alt="" />
+                        {coin.name || 'N/A'}
+                      </td>
+
+                      <td className="text-right">
+                        {`$${coin.lastPrice}`}
+                        <FormText color="muted">{`#${coin.lastIndex}`}</FormText>
+                      </td>
+
+                      <td className="text-right">
+                        {!!coin.index ? (
+                          <div>
+                            {`${coin.price - coin.lastPrice >= 0 ? '+' : '-'} ${formatNumber(Math.round(Math.abs(coin.price - coin.lastPrice) / coin.lastPrice * 100), 0)}%`}
+
+                            <FormText color="muted">
+                              {coin.index - coin.lastIndex >= 0 ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />} {Math.abs(coin.index - coin.lastIndex)}
+                            </FormText>
+                          </div>
+                        ) : 'N/A'}
+                      </td>
+
+                      <td className="text-right">
+                        {!!coin.index ? (
+                          <div>
+                            {coin.price}
+                            <FormText color="muted">{coin.index}</FormText>
+                          </div>
+                        ) : 'N/A'}
+                      </td>
+                    </tr>
+                  )
+                )}
                 <tr>
-                    <th scope="row">Total investment</th>
-                    <th scope="row" colSpan="2">{`$${this.state.response.totalInvestment}`}</th>
-                    <th scope="row">{Math.round(this.state.response.returnRate, 2)}</th>
-                    <th scope="row" colSpan="2">{`$${Math.round(this.state.response.totalReturn, 2)}`}</th>
+                  <th scope="row">Total investment</th>
+
+                  <th className="text-right" scope="row">{`$${formatNumber(this.state.response.totalInvestment, 0)}`}</th>
+
+                  <th className="text-right" scope="row">
+                    {`${this.state.response.totalReturn - this.state.response.totalInvestment >= 0 ? '+' : '-'} ${formatNumber(Math.round(Math.abs(this.state.response.totalReturn - this.state.response.totalInvestment) / this.state.response.totalInvestment * 100), 0)} %`}
+                  </th>
+
+                  <th className="text-right" scope="row">{`$${formatNumber(this.state.response.totalReturn, 0)}`}</th>
                 </tr>
               </tbody>
             </Table>
