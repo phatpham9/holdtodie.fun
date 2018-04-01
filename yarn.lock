@@ -1630,9 +1630,9 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
-crypto-roi@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/crypto-roi/-/crypto-roi-1.0.1.tgz#a55678050372df2efa2538ef48549352f235287a"
+crypto-roi@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/crypto-roi/-/crypto-roi-1.0.2.tgz#86432e2e50b042707b564cccce61e6d7f7a3efec"
   dependencies:
     isomorphic-fetch "^2.2.1"
 

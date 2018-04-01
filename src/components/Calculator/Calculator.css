@@ -1,7 +1,11 @@
+.calculator-wrapper {
+  margin: 1.5rem 0;
+}
 
 .calculator-wrapper .response-table {
-    margin: 1.5rem 0 0;
+    margin-top: 1.5rem;
 }
+
 .calculator-wrapper .response-table span {
   text-transform: uppercase;
   color: #aaa;
@@ -9,18 +13,18 @@
   font-weight: 500;
   margin-bottom: 10px;
 }
+
 .calculator-wrapper .response-table img {
   width: 20px;
   display: inline-block;
   margin-top: -4px;
   margin-right: 5px;
 }
+
 .calculator-wrapper .response-table table{
   margin-top: 5px;
 }
+
 .form-group:last-child{
   margin-bottom: 0;
-}
-button {
-    cursor: pointer;
 }
