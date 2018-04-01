@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Table, Row, Col, FormText } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faStar from '@fortawesome/fontawesome-free-solid/faStar';
 import faAngleUp from '@fortawesome/fontawesome-free-solid/faAngleUp';
 import faAngleDown from '@fortawesome/fontawesome-free-solid/faAngleDown';
 
@@ -28,12 +29,13 @@ class Calculator extends Component {
 
     this.state = {
       top: 10,
-      min: undefined,
-      max: undefined,
       from: '2017-01-01',
       to: '2017-12-31',
+      min: undefined,
+      max: undefined,
       ignores: '',
       response: undefined,
+      leaderBoard: [],
       inProgress: false,
     }
 
@@ -68,8 +70,11 @@ class Calculator extends Component {
         ignores: ignores ? ignores.split(',') : [],
       });
 
+      const leaderBoard = response.coins.filter(({ index }) => !!index).sort((c1, c2) => c1.lastPrice - c2.price).map(({ symbol }) => symbol);
+
       this.setState({
         response,
+        leaderBoard,
         inProgress: false,
       });
     });
@@ -138,8 +143,9 @@ class Calculator extends Component {
                   this.state.response.coins.map((coin, index) =>
                     <tr key={index}>
                       <td>
-                        <img src={`https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/32/color/${coin.symbol.toLowerCase()}.png`} alt="" />
-                        {coin.name || 'N/A'}
+                        <img src={`https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/32/color/${coin.symbol.toLowerCase()}.png`} alt="" /> {coin.name || 'N/A'} {[0, 1, 2].indexOf(this.state.leaderBoard.indexOf(coin.symbol)) !== -1 && <div className="text-warning d-inline-block">
+                          <FontAwesomeIcon icon={faStar} /> WINNER #{this.state.leaderBoard.indexOf(coin.symbol) + 1} <FontAwesomeIcon icon={faStar} />
+                        </div>}
                       </td>
 
                       <td className="text-right">
