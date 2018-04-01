@@ -9,15 +9,10 @@ import Button from '../Common/Button';
 import CryptoROI from 'crypto-roi';
 import './Calculator.css';
 
-const getDateString = (date) => {
-  const [dateString] = new Date(date).toISOString().match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/);
-
-  return dateString;
-};
-
 /**
  * formatNumber(number, n, x)
  *
+ * @param integer number: number to be formated
  * @param integer n: length of decimal
  * @param integer x: length of sections
  */
@@ -113,7 +108,7 @@ class Calculator extends Component {
 
           <FormGroup>
             <Label for="ignores">Except (optional)</Label>
-            <Input type="search" value={this.state.ignores} name="ignores" id="ignores" placeholder="Enter a coin you want to ignore." onChange={this.change}/>
+            <Input type="search" value={this.state.ignores} name="ignores" id="ignores" placeholder="Enter coins you want to exclude" onChange={this.change}/>
             <FormText color="muted">
               Coins are separated by comma. For example: 'USDT,DOGE'
             </FormText>
@@ -132,9 +127,9 @@ class Calculator extends Component {
               <thead>
                 <tr>
                   <th>Coin</th>
-                  <th className="text-right">{`From ${getDateString(this.state.from)}`}</th>
+                  <th className="text-right">{new Date(this.state.from).toLocaleDateString()}</th>
                   <th className="text-right">ROI</th>
-                  <th className="text-right">{`To ${getDateString(this.state.to)}`}</th>
+                  <th className="text-right">{new Date(this.state.to).toLocaleDateString()}</th>
                 </tr>
               </thead>
 
@@ -148,29 +143,31 @@ class Calculator extends Component {
                       </td>
 
                       <td className="text-right">
-                        {`$${coin.lastPrice}`}
-                        <FormText color="muted">{`#${coin.lastIndex}`}</FormText>
+                        <div>${coin.lastPrice}</div>
+                        <small className="text-muted">#{coin.lastIndex}</small>
                       </td>
 
                       <td className="text-right">
                         {!!coin.index ? (
                           <div>
-                            {`${coin.price - coin.lastPrice >= 0 ? '+' : '-'} ${formatNumber(Math.round(Math.abs(coin.price - coin.lastPrice) / coin.lastPrice * 100), 0)}%`}
+                            <div className={coin.price - coin.lastPrice > 0 ? 'text-success' : coin.price - coin.lastPrice < 0 ? 'text-danger' : ''}>
+                              {`${coin.price - coin.lastPrice >= 0 ? '+' : '-'} ${formatNumber(Math.round(Math.abs(coin.price - coin.lastPrice) / coin.lastPrice * 100), 0)}%`}
+                            </div>
 
-                            <FormText color="muted">
+                            <small className={coin.index - coin.lastIndex > 0 ? 'text-success' : coin.index - coin.lastIndex === 0 ? 'text-muted' : 'text-danger'}>
                               {coin.index - coin.lastIndex >= 0 ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />} {Math.abs(coin.index - coin.lastIndex)}
-                            </FormText>
+                            </small>
                           </div>
-                        ) : 'N/A'}
+                        ) : <div className="text-muted">N/A</div>}
                       </td>
 
                       <td className="text-right">
                         {!!coin.index ? (
                           <div>
-                            {coin.price}
-                            <FormText color="muted">{coin.index}</FormText>
+                            <div>${coin.price}</div>
+                            <small className="text-muted">#{coin.index}</small>
                           </div>
-                        ) : 'N/A'}
+                        ) : <div className="text-muted">N/A</div>}
                       </td>
                     </tr>
                   )
@@ -181,7 +178,9 @@ class Calculator extends Component {
                   <th className="text-right" scope="row">{`$${formatNumber(this.state.response.totalInvestment, 0)}`}</th>
 
                   <th className="text-right" scope="row">
-                    {`${this.state.response.totalReturn - this.state.response.totalInvestment >= 0 ? '+' : '-'} ${formatNumber(Math.round(Math.abs(this.state.response.totalReturn - this.state.response.totalInvestment) / this.state.response.totalInvestment * 100), 0)} %`}
+                    <div className={this.state.response.totalReturn - this.state.response.totalInvestment > 0 ? 'text-success' : this.state.response.totalReturn - this.state.response.totalInvestment < 0 ? 'text-danger' : ''}>
+                      {`${this.state.response.totalReturn - this.state.response.totalInvestment >= 0 ? '+' : '-'} ${formatNumber(Math.round(Math.abs(this.state.response.totalReturn - this.state.response.totalInvestment) / this.state.response.totalInvestment * 100), 0)}%`}
+                    </div>
                   </th>
 
                   <th className="text-right" scope="row">{`$${formatNumber(this.state.response.totalReturn, 0)}`}</th>
