@@ -70,7 +70,7 @@ class Calculator extends Component {
         ignores: ignores ? ignores.split(',') : [],
       });
 
-      const leaderBoard = response.coins.filter(({ index }) => !!index).sort((c1, c2) => c1.lastPrice - c2.price).map(({ symbol }) => symbol);
+      const leaderBoard = response.coins.filter(({ index }) => !!index).sort((c1, c2) => c2.price / c2.lastPrice - c1.price / c1.lastPrice).map(({ symbol }) => symbol);
 
       this.setState({
         response,
